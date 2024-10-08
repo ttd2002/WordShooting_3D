@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,12 +40,14 @@ public class TimeManager : SingletonAbstract<TimeManager>
     {
         if (!this.gameEnded) return;
         Time.timeScale = 0f;
-       
-        int minutes = Mathf.FloorToInt(30f / 60);
-        int seconds = Mathf.FloorToInt(30f % 60);
-        string timeStamp = string.Format("{0:00}:{1:00}", minutes, seconds);
+        int minutes = Mathf.FloorToInt(120f / 60);
+        int seconds = Mathf.FloorToInt(120f % 60);
+        string totalTime = string.Format("{0:00}:{1:00}", minutes, seconds);
         int totalScore = ScoreManager.Instance.TotalScore;
-        Debug.Log("Total Score:" + totalScore + "\n Total Time: " + timeStamp);
+        SingleGameHistory singleGameHistory = new SingleGameHistory(totalScore, totalTime, DateTime.Now);
+        FirebaseManager.Instance.SaveSingleGameHistory(singleGameHistory);
+
+        UICompleteLevel.Instance.Open();
         this.gameEnded = false;
 
     }

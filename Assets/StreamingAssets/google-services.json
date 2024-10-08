@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "777890921230",
+    "firebase_url": "https://wordshooting-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "wordshooting",
+    "storage_bucket": "wordshooting.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:777890921230:android:4a8697ee16eeefa111755f",
+        "android_client_info": {
+          "package_name": "com.wynn.wordshooting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "777890921230-gs522i372g1eb51741itened084rdjvj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTemhwCxA_nb3rhnU-bUXKK-KdAHa_uww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "777890921230-gs522i372g1eb51741itened084rdjvj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "777890921230-guqtqnvkl3at59iij2fvghon4odq9d5l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wynn.wordshooting"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -23,8 +23,13 @@ public abstract class SingletonAbstract<T> : WMonoBehaviour where T : SingletonA
     protected override void Awake()
     {
         base.Awake();
-        if (instance as T != null) Debug.LogError("Only 1 " + typeof(T).Name + " allow to exist");
+        if (instance as T != null)
+        {
+            Object.Destroy(this.gameObject);
+        }
         instance = (T)this;
     }
-
 }
+
+
+
