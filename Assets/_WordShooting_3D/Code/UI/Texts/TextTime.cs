@@ -10,6 +10,6 @@ public class TextTime : TextBase
     }
     protected virtual void UpdateTime()
     {
-        this.text.SetText(TimeManager.Instance.GameDuration);
+        this.text.SetText(TimeController.Instance.GameDuration);
     }
 }

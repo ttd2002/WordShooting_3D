@@ -1,32 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using Fusion;
-using TMPro;
-using UnityEngine;
 
-public class NetworkScore : NetworkBehaviour
+public class NetworkScore : SingletonNetworkAbstract<NetworkScore>
 {
-    protected int wordScore = 5;
-    protected int bonusScore = 20;
-    [Networked]
-    [OnChangedRender(nameof(OnScoreChanged))]
-    public int totalScore { get; set; } = 0;
+    [Networked, Capacity(4)]
+    public NetworkArray<PlayerScoreInfo> PlayerInfos { get; }
 
-    [SerializeField] private TextMeshProUGUI playerScore;
-    private void OnScoreChanged()
+    public void UpdatePlayerScore(int index, int newScore)
     {
-        playerScore.text = totalScore.ToString();
+        if (index >= 0 && index < PlayerInfos.Length)
+        {
+            PlayerInfos.Set(index, new PlayerScoreInfo
+            {
+                PlayerName = PlayerInfos[index].PlayerName,
+                PlayerScore = newScore
+            });
+        }
     }
-
-    public virtual void AddScore()
+    public void UpdatePlayerName(int index, string newName)
     {
-        this.totalScore += this.wordScore;
-        playerScore.text = totalScore.ToString();
+        if (index >= 0 && index < PlayerInfos.Length)
+        {
+            PlayerInfos.Set(index, new PlayerScoreInfo
+            {
+                PlayerName = newName,
+                PlayerScore = PlayerInfos[index].PlayerScore
+            });
+        }
     }
-    public virtual void AddBonusScore()
-    {
-        this.totalScore += this.bonusScore;
-        playerScore.text = totalScore.ToString();
-    }
-
 }

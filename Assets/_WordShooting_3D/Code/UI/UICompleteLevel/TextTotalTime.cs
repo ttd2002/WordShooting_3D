@@ -10,7 +10,7 @@ public class TextTotalTime : TextBase
     }
     protected virtual void UpdateTime()
     {
-        float time = 120f - TimeManager.Instance.RemainingTime;
+        float time = 120f - TimeController.Instance.RemainingTime;
         int minutes = Mathf.FloorToInt(time / 60);
         int seconds = Mathf.FloorToInt(time % 60);
         string timeStamp = string.Format("{0:00}:{1:00}", minutes, seconds);

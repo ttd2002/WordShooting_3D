@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5796834922087656586}
   - component: {fileID: 6429456704432893193}
   - component: {fileID: 2854941016486557980}
+  - component: {fileID: -819904765127860422}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -56,6 +57,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 6429456704432893193}
   - {fileID: 2854941016486557980}
+  - {fileID: -819904765127860422}
   - {fileID: 1734257644647041695}
   - {fileID: 3137608630113046868}
 --- !u!114 &6429456704432893193
@@ -90,6 +92,23 @@ MonoBehaviour:
   SyncParent: 0
   _autoAOIOverride: 1
   DisableSharedModeInterpolation: 0
+--- !u!114 &-819904765127860422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564434920283398101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f441633e967fcc44cab51f318132ab69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  namePlayerText: {fileID: 4033562636206144332}
+  _playerName:
+    _length: 0
+    _data:
+      Data: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1 &683737334426797997
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,10 +546,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c829e89f1b2c954089b9e9a334cd0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAutoTyping: 0
   targetTextComponent: {fileID: 0}
   networkGun: {fileID: 6429456704432893193}
-  bullet: {fileID: 8267865376867614110, guid: f5c07f42061eea14dbf356cc74f9ff5d, type: 3}
+  bullet: {fileID: 6958136350622949025, guid: f5c07f42061eea14dbf356cc74f9ff5d, type: 3}
   bulletFinish: {fileID: 572566779204305310, guid: 8cc3757aaeae5c24a97b9ba75094c3b5, type: 3}
+  muzzlePre: {fileID: -4009873796204133870, guid: 613058a5d4a02054db80cc74df56b7df, type: 3}
 --- !u!1 &7289300584969036875
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,7 +620,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 38, y: -22.3}
+  m_AnchoredPosition: {x: 21.5, y: -22.3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2114860089660056188

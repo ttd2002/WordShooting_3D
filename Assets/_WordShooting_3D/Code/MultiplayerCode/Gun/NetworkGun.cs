@@ -7,23 +7,42 @@ using UnityEngine;
 public class NetworkGun : WNetworkBehaviour
 {
     [SerializeField] protected Transform firePoint;
-    public Transform FirePoint => firePoint;
     [SerializeField] protected NetworkLookAtTarget networkLookAtTarget;
-    public NetworkLookAtTarget NetworkLookAtTarget => networkLookAtTarget;
     [SerializeField] protected NetworkShooting networkShooting;
+
+    public Transform FirePoint => firePoint;
+    public NetworkLookAtTarget NetworkLookAtTarget => networkLookAtTarget;
     public NetworkShooting NetworkShooting => networkShooting;
     public NetworkObject currentTarget;
     public override void FixedUpdateNetwork()
     {
-        NetworkObject target = NetworkMeteoriteSpawner.Instance.GetFirstActiveObject();
-        this.RPC_SetCurrentTarget(target);
+        currentTarget = NetworkMeteoriteSpawner.Instance.currentTarget;
+        this.RPC_SetCurrentTarget(currentTarget);
+        this.GetTargetToShoot(currentTarget);
         this.networkShooting.CheckKeyInput(currentTarget);
-      
+        if (HasInputAuthority && Input.GetKeyDown(KeyCode.F1))
+        {
+            RPC_ToggleAutoTyping();
+        }
+    }
+
+    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
+    private void RPC_ToggleAutoTyping()
+    {
+        NetworkShooting.isAutoTyping = !NetworkShooting.isAutoTyping;
+
+        if (NetworkShooting.isAutoTyping)
+        {
+            NetworkShooting.StartAutoTyping();
+        }
+        else
+        {
+            NetworkShooting.StopAutoTyping();
+        }
     }
     [Rpc]
     public void RPC_SetCurrentTarget(NetworkObject target)
     {
-        // Cập nhật currentTarget cho tất cả các client
         this.currentTarget = target;
         this.GetTargetToShoot(target);
 
@@ -31,8 +50,6 @@ public class NetworkGun : WNetworkBehaviour
     private void GetTargetToShoot(NetworkObject targetObject)
     {
         if (targetObject == null) return;
-        Transform reticle = targetObject.transform.Find("Canvas/Reticle");
-        reticle.gameObject.SetActive(true);
         this.networkLookAtTarget.LookTarget(targetObject.transform);
     }
     protected override void LoadComponents()

@@ -1,0 +1,9 @@
+21:25:36.028 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+21:25:36.274 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+21:25:44.925 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - wordshooting3d-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 274ms, init: 0ms
+21:25:45.088 [NamespaceSystem-blocking-namespace-operation-dispatcher-7] INFO com.firebase.core.namespace.StateManager - Namespace wordshooting3d-default-rtdb status Active to Active
+21:26:16.796 [FirebaseWorkerPool-1-4] WARN com.firebase.core.persistence.backend.dummy.EmulatorMetadataPersistence - Multiple projectIds are not recommended in single project mode. Requested 
+namespace wordshooting3d, but the emulator is configured for wordshooting3d-default-rtdb. To 
+opt-out of single project mode add/set the singleProjectMode: false property in 
+the firebase.json emulators config. 
+21:26:16.842 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - wordshooting3d successfully activated FBKV (SurveyIdle(0)) wait: 12ms, init: 0ms

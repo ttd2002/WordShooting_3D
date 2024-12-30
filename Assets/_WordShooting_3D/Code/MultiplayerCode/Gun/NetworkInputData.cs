@@ -7,5 +7,8 @@ public struct NetworkInputData : INetworkInput
 
     public char typedChar;
     public NetworkButtons buttons;
-
+    public void SetKeyTyped(bool state)
+    {
+        buttons.Set(KEY_TYPED, state);
+    }
 }

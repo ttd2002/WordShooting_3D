@@ -6,7 +6,7 @@ public class UIGameplayManager : SingletonAbstract<UIGameplayManager>
 {
     [SerializeField] private GameObject loadingUI;
     public GameObject LoadingUI => loadingUI;
-    [SerializeField] public NetworkScore networkScore;
+    // [SerializeField] public NetworkScore networkScore;
 
     protected override void LoadComponents()
     {

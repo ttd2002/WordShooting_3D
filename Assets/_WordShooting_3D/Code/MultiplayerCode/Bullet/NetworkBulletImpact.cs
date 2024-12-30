@@ -2,20 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using Fusion;
 using UnityEngine;
-
-
 [RequireComponent(typeof(SphereCollider))]
 [RequireComponent(typeof(Rigidbody))]
 public class NetworkBulletImpact : WNetworkBehaviour
 {
+    [SerializeField] private int ownerIndex;
+    [SerializeField] private string ownerNamePlayer;
+    [SerializeField] private NetworkScore scoreManager;
     [SerializeField] protected SphereCollider sphereCollider;
     [SerializeField] protected Rigidbody _rigidbody;
+    
+    protected override void Awake()
+    {
+        base.Awake();
+        this.LoadNetworkScore();
+    }
+    public void Initialize(int playerIndex, string name)
+    {
+        this.ownerIndex = playerIndex;
+        this.ownerNamePlayer = name;
+    }
+    
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        NetworkBulletSpawner.Instance.Despawn(transform.parent.GetComponent<NetworkObject>());
+        Transform score = ScorePopUpSpawner.Instance.Spawn(ScorePopUpSpawner.scorePopUp, transform.parent.position, transform.parent.rotation);
+        score.gameObject.SetActive(true);
+        int currentScore = scoreManager.PlayerInfos[ownerIndex].PlayerScore;
+        scoreManager.UpdatePlayerScore(ownerIndex, currentScore + 5);
+        scoreManager.UpdatePlayerName(ownerIndex, ownerNamePlayer);
+        if (transform.parent.name == "NetworkBulletFinish")
+        {
+            scoreManager.UpdatePlayerScore(ownerIndex, currentScore + 20);
+            scoreManager.UpdatePlayerName(ownerIndex, ownerNamePlayer);
 
+            NetworkMeteoriteDepsawn meteoriteDepsawn = other.transform.parent.parent.GetComponentInChildren<NetworkMeteoriteDepsawn>();
+            meteoriteDepsawn.SetCanDespawnIsTrue();
+            Transform scoreBonus = ScorePopUpSpawner.Instance.Spawn(ScorePopUpSpawner.scoreBonusPopUp, transform.parent.position, transform.parent.rotation);
+            scoreBonus.gameObject.SetActive(true);
+            NetworkExplosionSpawner.Instance.Spawn(other.transform.position, other.transform.rotation);
+        }
+    }
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadCollider();
         this.LoadRigidbody();
+        this.LoadNetworkScore();
     }
     protected virtual void LoadCollider()
     {
@@ -32,28 +65,10 @@ public class NetworkBulletImpact : WNetworkBehaviour
         this._rigidbody.isKinematic = true;
         Debug.Log(transform.name + ": LoadRigidbody", gameObject);
     }
-    protected virtual void OnTriggerEnter(Collider other)
+    protected virtual void LoadNetworkScore()
     {
-        NetworkBulletSpawner.Instance.Despawn(transform.parent.GetComponent<NetworkObject>());
-        Transform vfx_Impact = VFXSpawner.Instance.Spawn(VFXSpawner.muzzle, other.transform.position, other.transform.rotation);
-        vfx_Impact.gameObject.SetActive(true);
-        Transform score = ScorePopUpSpawner.Instance.Spawn(ScorePopUpSpawner.scorePopUp, transform.parent.position, transform.parent.rotation);
-        score.gameObject.SetActive(true);
-        UIGameplayManager.Instance.networkScore.AddScore();
-        if (transform.parent.name == "NetworkBulletFinish")
-        {
-            UIGameplayManager.Instance.networkScore.AddBonusScore();
-
-            Transform reticle = other.transform.parent.parent.Find("Canvas/Reticle");
-            reticle.gameObject.SetActive(false);
-
-            NetworkMeteoriteDepsawn meteoriteDepsawn = other.transform.parent.parent.GetComponentInChildren<NetworkMeteoriteDepsawn>();
-            meteoriteDepsawn.SetCanDespawnIsTrue();
-            Transform scoreBonus = ScorePopUpSpawner.Instance.Spawn(ScorePopUpSpawner.scoreBonusPopUp, transform.parent.position, transform.parent.rotation);
-            scoreBonus.gameObject.SetActive(true);
-            Transform vfx_Explosion = VFXSpawner.Instance.Spawn(VFXSpawner.explosion, other.transform.position, other.transform.rotation);
-            vfx_Explosion.gameObject.SetActive(true);
-        }
+        if (this.scoreManager != null) return;
+        this.scoreManager = FindObjectOfType<NetworkScore>();
     }
 
 }

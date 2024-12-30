@@ -10,7 +10,7 @@ public class TextScore : TextBase
     }
     protected virtual void UpdateScore()
     {
-        int score = ScoreManager.Instance.TotalScore;
+        int score = ScoreController.Instance.TotalScore;
         this.text.SetText("Score: " + score);
     }
 }

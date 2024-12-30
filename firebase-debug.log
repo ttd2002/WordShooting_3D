@@ -1,0 +1,265 @@
+[debug] [2024-12-09T14:25:24.585Z] ----------------------------------------------------------------------
+[debug] [2024-12-09T14:25:24.588Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ADMIN\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2024-12-09T14:25:24.588Z] CLI Version:   13.28.0
+[debug] [2024-12-09T14:25:24.589Z] Platform:      win32
+[debug] [2024-12-09T14:25:24.589Z] Node Version:  v18.18.0
+[debug] [2024-12-09T14:25:24.590Z] Time:          Mon Dec 09 2024 21:25:24 GMT+0700 (Indochina Time)
+[debug] [2024-12-09T14:25:24.591Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-12-09T14:25:24.739Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-09T14:25:24.739Z] > authorizing via signed-in user (thanhdai912@gmail.com)
+[debug] [2024-12-09T14:25:24.819Z] java version "23.0.1" 2024-10-15
+
+[debug] [2024-12-09T14:25:24.820Z] Java(TM) SE Runtime Environment (build 23.0.1+11-39)
+Java HotSpot(TM) 64-Bit Server VM (build 23.0.1+11-39, mixed mode, sharing)
+
+[debug] [2024-12-09T14:25:24.882Z] Parsed Java major version: 23
+[info] i  emulators: Starting emulators: database, dataconnect {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: database, dataconnect"}}
+[debug] [2024-12-09T14:25:24.912Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-12-09T14:25:24.912Z] [database] Database Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-12-09T14:25:24.913Z] [dataconnect.postgres] postgres server for dataconnect only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-12-09T14:25:24.913Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":3001},{"address":"::1","family":"IPv6","port":3001}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9000}],"dataconnect":[{"address":"127.0.0.1","family":"IPv4","port":9399},{"address":"::1","family":"IPv6","port":9399}],"dataconnect.postgres":[{"address":"127.0.0.1","family":"IPv4","port":5432}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2024-12-09T14:25:24.921Z] [hub] writing locator at C:\Users\ADMIN\AppData\Local\Temp\hub-wordshooting3d.json
+[debug] [2024-12-09T14:25:24.929Z] Checked if tokens are valid: true, expires at: 1733756219363
+[debug] [2024-12-09T14:25:24.929Z] Checked if tokens are valid: true, expires at: 1733756219363
+[debug] [2024-12-09T14:25:24.931Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/wordshooting3d [none]
+[debug] [2024-12-09T14:25:25.359Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/wordshooting3d 200
+[debug] [2024-12-09T14:25:25.360Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/wordshooting3d {"projectId":"wordshooting3d","projectNumber":"247184482609","displayName":"WordShooting3D","name":"projects/wordshooting3d","resources":{"hostingSite":"wordshooting3d","realtimeDatabaseInstance":"wordshooting3d-default-rtdb"},"state":"ACTIVE","etag":"1_c9f77a8b-458a-4d9d-bd88-ff31b974ba1d"}
+[debug] [2024-12-09T14:25:25.361Z] database rules config:  [{"instance":"wordshooting3d-default-rtdb","rules":"C:\\UnityProject\\WordShooting_3D\\database.rules.json"}]
+[info] i  database: downloading firebase-database-emulator-v4.11.2.jar... {"metadata":{"emulator":{"name":"database"},"message":"downloading firebase-database-emulator-v4.11.2.jar..."}}
+[debug] [2024-12-09T14:25:25.377Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/firebase-database-emulator-v4.11.2.jar 
+[debug] [2024-12-09T14:25:25.747Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/firebase-database-emulator-v4.11.2.jar 200
+[debug] [2024-12-09T14:25:25.747Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/firebase-database-emulator-v4.11.2.jar [stream]
+[debug] [2024-12-09T14:25:33.112Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2024-12-09T14:25:33.113Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2024-12-09T14:25:33.113Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
+[debug] [2024-12-09T14:25:33.113Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","C:\\Users\\ADMIN\\.cache\\firebase\\emulators\\firebase-database-emulator-v4.11.2.jar","--host","127.0.0.1","--port",9000,"--single_project_mode","Warning"],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host","single_project_mode"],"joinArgs":false,"shell":false,"port":9000} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\ADMIN\\\\.cache\\\\firebase\\\\emulators\\\\firebase-database-emulator-v4.11.2.jar\",\"--host\",\"127.0.0.1\",\"--port\",9000,\"--single_project_mode\",\"Warning\"],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9000}"}}
+[info] i  database: Database Emulator logging to database-debug.log {"metadata":{"emulator":{"name":"database"},"message":"Database Emulator logging to \u001b[1mdatabase-debug.log\u001b[22m"}}
+[debug] [2024-12-09T14:25:36.031Z] 21:25:36.028 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+ {"metadata":{"emulator":{"name":"database"},"message":"21:25:36.028 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started\r\n"}}
+[debug] [2024-12-09T14:25:36.275Z] 21:25:36.274 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+ {"metadata":{"emulator":{"name":"database"},"message":"21:25:36.274 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000\r\n"}}
+[debug] [2024-12-09T14:25:37.189Z] I1209 21:25:37.172427    1268 control.go:45] [engine.Service /emulator/WordShooting_3D b376] UpdateSchema(): done sources: schema\schema.gql [1384B] 
+I1209 21:25:37.184898    1268 control.go:73] [engine.Service /emulator/WordShooting_3D b376] UpdateConnector(default): done sources: connector\mutations.gql [1163B] connector\queries.gql [1855B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1209 21:25:37.172427    1268 control.go:45] [engine.Service /emulator/WordShooting_3D b376] UpdateSchema(): done sources: schema\\schema.gql [1384B] \nI1209 21:25:37.184898    1268 control.go:73] [engine.Service /emulator/WordShooting_3D b376] UpdateConnector(default): done sources: connector\\mutations.gql [1163B] connector\\queries.gql [1855B] \n"}}
+[debug] [2024-12-09T14:25:37.190Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2024-12-09T14:25:37.190Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2024-12-09T14:25:37.190Z] Starting Data Connect Emulator with command {"binary":"C:\\Users\\ADMIN\\.cache\\firebase\\emulators\\dataconnect-emulator-1.7.4.exe","args":["--logtostderr","-v=2","dev","--listen=127.0.0.1:9399,[::1]:9399","--config_dir=C:\\UnityProject\\WordShooting_3D\\dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting Data Connect Emulator with command {\"binary\":\"C:\\\\Users\\\\ADMIN\\\\.cache\\\\firebase\\\\emulators\\\\dataconnect-emulator-1.7.4.exe\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=127.0.0.1:9399,[::1]:9399\",\"--config_dir=C:\\\\UnityProject\\\\WordShooting_3D\\\\dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: Data Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"Data Connect Emulator logging to \u001b[1mdataconnect-debug.log\u001b[22m"}}
+[info] i  dataconnect: Started up Postgres server, listening on {"address":"127.0.0.1","family":"IPv4","port":5432} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Started up Postgres server, listening on {\"address\":\"127.0.0.1\",\"family\":\"IPv4\",\"port\":5432}"}}
+[debug] [2024-12-09T14:25:37.218Z] [Data Connect] Connecting to postgres://127.0.0.1:5432/fdcdb?sslmode=disable}...
+[debug] [2024-12-09T14:25:37.218Z] >>> [apiv2][query] POST http://127.0.0.1:9399/emulator/configure [none]
+[debug] [2024-12-09T14:25:37.218Z] >>> [apiv2][body] POST http://127.0.0.1:9399/emulator/configure {"connectionString":"postgres://127.0.0.1:5432/fdcdb?sslmode=disable","database":"fdcdb","serviceId":"WordShooting_3D","maxOpenConnections":1}
+[debug] [2024-12-09T14:25:37.221Z] *** [apiv2] error from fetch(http://127.0.0.1:9399/emulator/configure, {"headers":{},"method":"POST","body":"{\"connectionString\":\"postgres://127.0.0.1:5432/fdcdb?sslmode=disable\",\"database\":\"fdcdb\",\"serviceId\":\"WordShooting_3D\",\"maxOpenConnections\":1}"}): FetchError: request to http://127.0.0.1:9399/emulator/configure failed, reason: connect ECONNREFUSED 127.0.0.1:9399
+[debug] [2024-12-09T14:25:37.221Z] [Data Connect] Retrying connectToPostgress call (1 of 3 attempts): FirebaseError: Data Connect emulator: undefined
+[debug] [2024-12-09T14:25:37.232Z] I1209 21:25:37.229450    6140 load.go:37] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1209 21:25:37.229450    6140 load.go:37] Reloading schema and connectors...\n"}}
+[debug] [2024-12-09T14:25:37.243Z] I1209 21:25:37.243079    6140 control.go:45] [engine.Service /emulator/WordShooting_3D 08aa] UpdateSchema(): done sources: schema\schema.gql [1384B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1209 21:25:37.243079    6140 control.go:45] [engine.Service /emulator/WordShooting_3D 08aa] UpdateSchema(): done sources: schema\\schema.gql [1384B] \n"}}
+[debug] [2024-12-09T14:25:37.252Z] I1209 21:25:37.252085    6140 control.go:73] [engine.Service /emulator/WordShooting_3D 08aa] UpdateConnector(default): done sources: connector\queries.gql [1855B] connector\mutations.gql [1163B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1209 21:25:37.252085    6140 control.go:73] [engine.Service /emulator/WordShooting_3D 08aa] UpdateConnector(default): done sources: connector\\queries.gql [1855B] connector\\mutations.gql [1163B] \n"}}
+[debug] [2024-12-09T14:25:37.278Z] I1209 21:25:37.276085    6140 collector.go:107] schema extensions wrote into "C:\\UnityProject\\WordShooting_3D\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [65151B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1209 21:25:37.276085    6140 collector.go:107] schema extensions wrote into \"C:\\\\UnityProject\\\\WordShooting_3D\\\\dataconnect\\\\.dataconnect\\\\schema\"\nGenerated sources: prelude.gql [65151B] \n"}}
+[debug] [2024-12-09T14:25:37.279Z] I1209 21:25:37.278199    6140 load.go:115] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1209 21:25:37.278199    6140 load.go:115] Finished reloading\n"}}
+[debug] [2024-12-09T14:25:37.284Z] I1209 21:25:37.284085    6140 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:9399
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1209 21:25:37.284085    6140 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:9399\n"}}
+[debug] [2024-12-09T14:25:37.285Z] I1209 21:25:37.285083    6140 dev.go:95] Listening on address (HTTP + gRPC): [::1]:9399
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1209 21:25:37.285083    6140 dev.go:95] Listening on address (HTTP + gRPC): [::1]:9399\n"}}
+[debug] [2024-12-09T14:25:39.233Z] [Data Connect] Connecting to postgres://127.0.0.1:5432/fdcdb?sslmode=disable}...
+[debug] [2024-12-09T14:25:39.234Z] >>> [apiv2][query] POST http://127.0.0.1:9399/emulator/configure [none]
+[debug] [2024-12-09T14:25:39.235Z] >>> [apiv2][body] POST http://127.0.0.1:9399/emulator/configure {"connectionString":"postgres://127.0.0.1:5432/fdcdb?sslmode=disable","database":"fdcdb","serviceId":"WordShooting_3D","maxOpenConnections":1}
+[debug] [2024-12-09T14:25:39.276Z] Frontend message 
+[debug] [2024-12-09T14:25:39.281Z] Backend message AuthenticationResponse
+[debug] [2024-12-09T14:25:39.283Z] Backend message ParameterStatus
+[debug] [2024-12-09T14:25:39.284Z] Backend message ReadyForQuery
+[debug] [2024-12-09T14:25:39.285Z] Frontend message Query
+[debug] [2024-12-09T14:25:44.106Z] Backend message EmptyQuery
+[debug] [2024-12-09T14:25:44.106Z] Backend message ReadyForQuery
+[debug] [2024-12-09T14:25:44.122Z] Frontend message Query
+[debug] [2024-12-09T14:25:44.127Z] Backend message RowDescriptionMessage
+[debug] [2024-12-09T14:25:44.129Z] Backend message DataRow
+[debug] [2024-12-09T14:25:44.129Z] Backend message CommandComplete
+[debug] [2024-12-09T14:25:44.130Z] Backend message ReadyForQuery
+[debug] [2024-12-09T14:25:44.132Z] Frontend message Parse
+[debug] [2024-12-09T14:25:44.133Z] Backend message ParseComplete
+[debug] [2024-12-09T14:25:44.134Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.134Z] Frontend message Describe
+[debug] [2024-12-09T14:25:44.135Z] Backend message ParameterDescriptionMessage
+[debug] [2024-12-09T14:25:44.135Z] Backend message RowDescriptionMessage
+[debug] [2024-12-09T14:25:44.135Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.136Z] Frontend message Sync
+[debug] [2024-12-09T14:25:44.137Z] Backend message ReadyForQuery
+[debug] [2024-12-09T14:25:44.137Z] Frontend message Bind
+[debug] [2024-12-09T14:25:44.139Z] Backend message BindComplete
+[debug] [2024-12-09T14:25:44.139Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.139Z] Frontend message Execute
+[debug] [2024-12-09T14:25:44.142Z] Backend message DataRow
+[debug] [2024-12-09T14:25:44.142Z] Backend message CommandComplete
+[debug] [2024-12-09T14:25:44.142Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.143Z] Frontend message Sync
+[debug] [2024-12-09T14:25:44.144Z] Backend message ReadyForQuery
+[debug] [2024-12-09T14:25:44.145Z] Frontend message Parse
+[debug] [2024-12-09T14:25:44.146Z] Backend message ParseComplete
+[debug] [2024-12-09T14:25:44.147Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.147Z] Frontend message Describe
+[debug] [2024-12-09T14:25:44.148Z] Backend message ParameterDescriptionMessage
+[debug] [2024-12-09T14:25:44.148Z] Backend message RowDescriptionMessage
+[debug] [2024-12-09T14:25:44.148Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.149Z] Frontend message Sync
+[debug] [2024-12-09T14:25:44.150Z] Backend message ReadyForQuery
+[debug] [2024-12-09T14:25:44.150Z] Frontend message Bind
+[debug] [2024-12-09T14:25:44.153Z] Backend message BindComplete
+[debug] [2024-12-09T14:25:44.153Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.154Z] Frontend message Execute
+[debug] [2024-12-09T14:25:44.155Z] Backend message CommandComplete
+[debug] [2024-12-09T14:25:44.155Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.155Z] Frontend message Sync
+[debug] [2024-12-09T14:25:44.156Z] Backend message ReadyForQuery
+[debug] [2024-12-09T14:25:44.157Z] Frontend message Parse
+[debug] [2024-12-09T14:25:44.160Z] Backend message ParseComplete
+[debug] [2024-12-09T14:25:44.160Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.160Z] Frontend message Describe
+[debug] [2024-12-09T14:25:44.161Z] Backend message ParameterDescriptionMessage
+[debug] [2024-12-09T14:25:44.161Z] Backend message RowDescriptionMessage
+[debug] [2024-12-09T14:25:44.162Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.162Z] Frontend message Sync
+[debug] [2024-12-09T14:25:44.163Z] Backend message ReadyForQuery
+[debug] [2024-12-09T14:25:44.163Z] Frontend message Bind
+[debug] [2024-12-09T14:25:44.173Z] Backend message BindComplete
+[debug] [2024-12-09T14:25:44.174Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.174Z] Frontend message Execute
+[debug] [2024-12-09T14:25:44.175Z] Backend message CommandComplete
+[debug] [2024-12-09T14:25:44.176Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.176Z] Frontend message Sync
+[debug] [2024-12-09T14:25:44.178Z] Backend message ReadyForQuery
+[debug] [2024-12-09T14:25:44.201Z] Frontend message Query
+[debug] [2024-12-09T14:25:44.204Z] Backend message RowDescriptionMessage
+[debug] [2024-12-09T14:25:44.204Z] Backend message DataRow
+[debug] [2024-12-09T14:25:44.204Z] Backend message CommandComplete
+[debug] [2024-12-09T14:25:44.204Z] Backend message ReadyForQuery
+[debug] [2024-12-09T14:25:44.205Z] Frontend message Parse
+[debug] [2024-12-09T14:25:44.207Z] Backend message ParseComplete
+[debug] [2024-12-09T14:25:44.207Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.207Z] Frontend message Describe
+[debug] [2024-12-09T14:25:44.209Z] Backend message ParameterDescriptionMessage
+[debug] [2024-12-09T14:25:44.209Z] Backend message RowDescriptionMessage
+[debug] [2024-12-09T14:25:44.209Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.209Z] Frontend message Sync
+[debug] [2024-12-09T14:25:44.211Z] Backend message ReadyForQuery
+[debug] [2024-12-09T14:25:44.212Z] Frontend message Bind
+[debug] [2024-12-09T14:25:44.214Z] Backend message BindComplete
+[debug] [2024-12-09T14:25:44.214Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.214Z] Frontend message Execute
+[debug] [2024-12-09T14:25:44.216Z] Backend message DataRow
+[debug] [2024-12-09T14:25:44.217Z] Backend message CommandComplete
+[debug] [2024-12-09T14:25:44.217Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.217Z] Frontend message Sync
+[debug] [2024-12-09T14:25:44.218Z] Backend message ReadyForQuery
+[debug] [2024-12-09T14:25:44.219Z] Frontend message Parse
+[debug] [2024-12-09T14:25:44.221Z] Backend message ParseComplete
+[debug] [2024-12-09T14:25:44.221Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.222Z] Frontend message Describe
+[debug] [2024-12-09T14:25:44.224Z] Backend message ParameterDescriptionMessage
+[debug] [2024-12-09T14:25:44.224Z] Backend message RowDescriptionMessage
+[debug] [2024-12-09T14:25:44.224Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.224Z] Frontend message Sync
+[debug] [2024-12-09T14:25:44.226Z] Backend message ReadyForQuery
+[debug] [2024-12-09T14:25:44.226Z] Frontend message Bind
+[debug] [2024-12-09T14:25:44.229Z] Backend message BindComplete
+[debug] [2024-12-09T14:25:44.229Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.229Z] Frontend message Execute
+[debug] [2024-12-09T14:25:44.231Z] Backend message CommandComplete
+[debug] [2024-12-09T14:25:44.231Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.231Z] Frontend message Sync
+[debug] [2024-12-09T14:25:44.233Z] Backend message ReadyForQuery
+[debug] [2024-12-09T14:25:44.233Z] Frontend message Parse
+[debug] [2024-12-09T14:25:44.236Z] Backend message ParseComplete
+[debug] [2024-12-09T14:25:44.236Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.236Z] Frontend message Describe
+[debug] [2024-12-09T14:25:44.238Z] Backend message ParameterDescriptionMessage
+[debug] [2024-12-09T14:25:44.238Z] Backend message RowDescriptionMessage
+[debug] [2024-12-09T14:25:44.238Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.238Z] Frontend message Sync
+[debug] [2024-12-09T14:25:44.240Z] Backend message ReadyForQuery
+[debug] [2024-12-09T14:25:44.240Z] Frontend message Bind
+[debug] [2024-12-09T14:25:44.248Z] Backend message BindComplete
+[debug] [2024-12-09T14:25:44.249Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.249Z] Frontend message Execute
+[debug] [2024-12-09T14:25:44.251Z] Backend message CommandComplete
+[debug] [2024-12-09T14:25:44.251Z] Filtered out a ReadyForQuery.
+[debug] [2024-12-09T14:25:44.251Z] Frontend message Sync
+[debug] [2024-12-09T14:25:44.253Z] Backend message ReadyForQuery
+[debug] [2024-12-09T14:25:44.254Z] Frontend message Query
+[debug] [2024-12-09T14:25:44.256Z] Backend message RowDescriptionMessage
+[debug] [2024-12-09T14:25:44.256Z] Backend message DataRow
+[debug] [2024-12-09T14:25:44.257Z] Backend message CommandComplete
+[debug] [2024-12-09T14:25:44.257Z] Backend message ReadyForQuery
+[debug] [2024-12-09T14:25:44.261Z] I1209 21:25:44.258034    6140 control.go:45] [engine.Service /emulator/WordShooting_3D 2f84] UpdateSchema(): done sources: schema\schema.gql [1384B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1209 21:25:44.258034    6140 control.go:45] [engine.Service /emulator/WordShooting_3D 2f84] UpdateSchema(): done sources: schema\\schema.gql [1384B] \n"}}
+[debug] [2024-12-09T14:25:44.261Z] I1209 21:25:44.261599    6140 control.go:73] [engine.Service /emulator/WordShooting_3D 2f84] UpdateConnector(default): done sources: connector\mutations.gql [1163B] connector\queries.gql [1855B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1209 21:25:44.261599    6140 control.go:73] [engine.Service /emulator/WordShooting_3D 2f84] UpdateConnector(default): done sources: connector\\mutations.gql [1163B] connector\\queries.gql [1855B] \n"}}
+[debug] [2024-12-09T14:25:44.264Z] <<< [apiv2][status] POST http://127.0.0.1:9399/emulator/configure 200
+[debug] [2024-12-09T14:25:44.264Z] <<< [apiv2][body] POST http://127.0.0.1:9399/emulator/configure {}
+[debug] [2024-12-09T14:25:44.264Z] [Data Connect] Successfully connected to postgres://127.0.0.1:5432/fdcdb?sslmode=disable}
+[debug] [2024-12-09T14:25:44.284Z] >>> [apiv2][query] PUT http://127.0.0.1:9000/.settings/rules.json ns=wordshooting3d-default-rtdb
+[debug] [2024-12-09T14:25:44.284Z] >>> [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json "{\n  \"rules\": {\n    \".read\": true,\n    \".write\": true\n  }\n}"
+[debug] [2024-12-09T14:25:44.926Z] 21:25:44.925 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - wordshooting3d-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 274ms, init: 0ms
+ {"metadata":{"emulator":{"name":"database"},"message":"21:25:44.925 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - wordshooting3d-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 274ms, init: 0ms\r\n"}}
+[debug] [2024-12-09T14:25:45.089Z] 21:25:45.088 [NamespaceSystem-blocking-namespace-operation-dispatcher-7] INFO com.firebase.core.namespace.StateManager - Namespace wordshooting3d-default-rtdb status Active to Active
+ {"metadata":{"emulator":{"name":"database"},"message":"21:25:45.088 [NamespaceSystem-blocking-namespace-operation-dispatcher-7] INFO com.firebase.core.namespace.StateManager - Namespace wordshooting3d-default-rtdb status Active to Active\r\n"}}
+[debug] [2024-12-09T14:25:45.137Z] <<< [apiv2][status] PUT http://127.0.0.1:9000/.settings/rules.json 200
+[debug] [2024-12-09T14:25:45.138Z] <<< [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json {"status":"ok"}
+[debug] [2024-12-09T14:25:45.138Z] >>> [apiv2][query] GET http://127.0.0.1:9399/emulator/info [none]
+[debug] [2024-12-09T14:25:45.141Z] <<< [apiv2][status] GET http://127.0.0.1:9399/emulator/info 200
+[debug] [2024-12-09T14:25:45.142Z] <<< [apiv2][body] GET http://127.0.0.1:9399/emulator/info {"version":"","services":[{"serviceId":"WordShooting_3D","connectionString":"dbname='fdcdb' host='127.0.0.1' port='5432' sslmode='disable' dbname='fdcdb'"}]}
+[debug] [2024-12-09T14:25:45.148Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: connect ECONNREFUSED ::1:40001. If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:3001/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────────┬────────────────┬────────────────────────────────┐
+│ Emulator     │ Host:Port      │ View in Emulator UI            │
+├──────────────┼────────────────┼────────────────────────────────┤
+│ Database     │ 127.0.0.1:9000 │ http://127.0.0.1:3001/database │
+├──────────────┼────────────────┼────────────────────────────────┤
+│ Data Connect │ 127.0.0.1:9399 │ n/a                            │
+└──────────────┴────────────────┴────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2024-12-09T14:26:16.798Z] 21:26:16.796 [FirebaseWorkerPool-1-4] WARN com.firebase.core.persistence.backend.dummy.EmulatorMetadataPersistence - Multiple projectIds are not recommended in single project mode. Requested 
+namespace wordshooting3d, but the emulator is configured for wordshooting3d-default-rtdb. To 
+opt-out of single project mode add/set the singleProjectMode: false property in 
+the firebase.json emulators config. 
+ {"metadata":{"emulator":{"name":"database"},"message":"21:26:16.796 [FirebaseWorkerPool-1-4] WARN com.firebase.core.persistence.backend.dummy.EmulatorMetadataPersistence - Multiple projectIds are not recommended in single project mode. Requested \nnamespace wordshooting3d, but the emulator is configured for wordshooting3d-default-rtdb. To \nopt-out of single project mode add/set the singleProjectMode: false property in \nthe firebase.json emulators config. \r\n"}}
+[debug] [2024-12-09T14:26:16.844Z] 21:26:16.842 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - wordshooting3d successfully activated FBKV (SurveyIdle(0)) wait: 12ms, init: 0ms
+ {"metadata":{"emulator":{"name":"database"},"message":"21:26:16.842 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - wordshooting3d successfully activated FBKV (SurveyIdle(0)) wait: 12ms, init: 0ms\r\n"}}
+[debug] [2024-12-09T14:34:46.708Z] Received signal SIGHUP 1
+[info]  
+[info] i  emulators: Received SIGHUP for the first time. Starting a clean shutdown. 
+[info] i  emulators: Please wait for a clean shutdown or send the SIGHUP signal again to stop right now. 
+[info] i  emulators: Shutting down emulators. {"metadata":{"emulator":{"name":"hub"},"message":"Shutting down emulators."}}
+[info] i  ui: Stopping Emulator UI {"metadata":{"emulator":{"name":"ui"},"message":"Stopping Emulator UI"}}
+[info] i  database: Stopping Database Emulator {"metadata":{"emulator":{"name":"database"},"message":"Stopping Database Emulator"}}
+[warn] !  Database Emulator has exited upon receiving signal: SIGINT 
+[info] i  dataconnect: Stopping Data Connect Emulator {"metadata":{"emulator":{"name":"dataconnect"},"message":"Stopping Data Connect Emulator"}}
+[error] !!  dataconnect: Postgres threw an unexpected error, shutting down the Data Connect emulator: Error: read ECONNRESET {"metadata":{"emulator":{"name":"dataconnect"},"message":"Postgres threw an unexpected error, shutting down the Data Connect emulator: Error: read ECONNRESET"}}
+[info] i  emulators: Shutting down emulators. {"metadata":{"emulator":{"name":"hub"},"message":"Shutting down emulators."}}
+[info] i  dataconnect: Stopping Data Connect Emulator {"metadata":{"emulator":{"name":"dataconnect"},"message":"Stopping Data Connect Emulator"}}
+[info] i  hub: Stopping emulator hub {"metadata":{"emulator":{"name":"hub"},"message":"Stopping emulator hub"}}
+[debug] [2024-12-09T14:34:46.996Z] Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:217:20)
+[error] 
+[error] Error: An unexpected error has occurred.
+[warn] !  Data Connect Emulator has exited upon receiving signal: SIGINT 
+[info] i  hub: Stopping emulator hub {"metadata":{"emulator":{"name":"hub"},"message":"Stopping emulator hub"}}
+[info] i  logging: Stopping Logging Emulator {"metadata":{"emulator":{"name":"logging"},"message":"Stopping Logging Emulator"}}
+[info] i  logging: Stopping Logging Emulator {"metadata":{"emulator":{"name":"logging"},"message":"Stopping Logging Emulator"}}
+[debug] [2024-12-09T14:34:47.054Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: connect ECONNREFUSED ::1:40001. If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[debug] [2024-12-09T14:34:47.057Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: connect ECONNREFUSED ::1:40001. If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.

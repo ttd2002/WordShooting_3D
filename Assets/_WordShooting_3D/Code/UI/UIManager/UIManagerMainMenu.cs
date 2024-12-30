@@ -28,21 +28,36 @@ public class UIManagerMainMenu : SingletonAbstract<UIManagerMainMenu>
         this.rooms.gameObject.SetActive(true);
         this.roomDetail.gameObject.SetActive(false);
     }
+    public void CloseRooms()
+    {
+        this.rooms.gameObject.SetActive(false);
+    }
+    public void ClosePanel()
+    {
+        this.panelManager.CloseCurrent();
+    }
     public void OpenMainMenu()
     {
         this.panelManager.CloseCurrent();
         this.mainMenu.gameObject.SetActive(true);
         this.panelManager.OpenPanel(mainMenu.GetComponent<Animator>());
+
+    }
+    public void OpenLoginMenu()
+    {
+        this.panelManager.CloseCurrent();
+        this.loginMenu.gameObject.SetActive(true);
+        this.panelManager.OpenPanel(loginMenu.GetComponent<Animator>());
     }
     public void SetTitleRoomDetail(string sessionName)
     {
-        Text roomTitle = roomDetail.transform.Find("RoomDetailTitle").Find("TitleLabel").GetComponent<Text>();
+        Text roomTitle = roomDetail.transform.Find("RoomDetailTitle/TitleLabel").GetComponent<Text>();
         roomTitle.text = sessionName;
     }
 
     public void EnableStartButton(bool isEnabled)
     {
-        Button startButton = roomDetail.transform.Find("VerticalGroup").Find("HorizontalGroup").Find("StartButton").GetComponent<Button>();
+        Button startButton = roomDetail.transform.Find("VerticalGroup/HorizontalGroup/StartButton").GetComponent<Button>();
         startButton.interactable = isEnabled;
     }
     protected override void LoadComponents()

@@ -4,5 +4,4 @@ using UnityEngine;
 
 public class NetworkBulletSpawner : SingletonNetworkSpawner<NetworkBulletSpawner>
 {
-    public static string bullet = "NetworkBullet";
 }

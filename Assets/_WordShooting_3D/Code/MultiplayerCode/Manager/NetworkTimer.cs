@@ -1,22 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Fusion;
 using TMPro;
 using UnityEngine;
 
-public class NetworkTimer : NetworkBehaviour
+public class NetworkTimer : SingletonNetworkAbstract<NetworkTimer>
 {
     [Networked]
     [OnChangedRender(nameof(OnCountdownTimeChanged))]
-    private float countdownTime { get; set; } = 120f;
+    private float countdownTime { get; set; } = 15;
     [Networked]
     [OnChangedRender(nameof(OnPauseStatusChanged))]
     private bool isPaused { get; set; }
-
-    [SerializeField]
-    private TextMeshProUGUI timerText;
-
-    private void Start()
+    [SerializeField] private TextMeshProUGUI timerText;
+    private bool isFinished = false;
+    protected override void Start()
     {
         if (Runner.IsServer)
         {
@@ -24,9 +24,9 @@ public class NetworkTimer : NetworkBehaviour
         }
     }
 
-    private void Update()
+    public override void FixedUpdateNetwork()
     {
-        if (!Runner.IsServer) return;
+        if (!Runner.IsServer || isFinished) return;
         countdownTime -= Runner.DeltaTime;
 
         if (countdownTime <= 0f)
@@ -42,8 +42,7 @@ public class NetworkTimer : NetworkBehaviour
     }
     private void OnPauseStatusChanged()
     {
-        Time.timeScale = isPaused ? 0f : 1f; 
-        Debug.Log("Game pause status changed: " + isPaused);
+        Time.timeScale = isPaused ? 0f : 1f;
     }
     private void UpdateTimerUI()
     {
@@ -63,8 +62,41 @@ public class NetworkTimer : NetworkBehaviour
 
     private void OnCountdownFinished()
     {
+        if (isFinished) return;
+        isFinished = true;
         isPaused = true;
-        Debug.Log("Countdown finished! Game is paused.");
         Time.timeScale = 0f;
+
+        RPC_HandleCountdownFinished();
+
     }
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    private void RPC_HandleCountdownFinished()
+    {
+        SaveGameHistory();
+        UICompleteLevel.Instance.Open();
+    }
+    private void SaveGameHistory()
+    {
+        MultiGameHistory multiGameHistory = new MultiGameHistory();
+        var sortedPlayerInfos = NetworkScore.Instance.PlayerInfos
+           .Where(playerInfo => !string.IsNullOrEmpty(playerInfo.PlayerName.ToString())) 
+           .OrderByDescending(playerInfo => playerInfo.PlayerScore);
+
+        foreach (var playerInfo in sortedPlayerInfos)
+        {
+            if (!string.IsNullOrEmpty(playerInfo.PlayerName.ToString()))
+            {
+                PlayerScore playerScore = new PlayerScore(playerInfo.PlayerName.ToString(), playerInfo.PlayerScore.ToString());
+                multiGameHistory.leaderBoard.Add(playerScore);
+            }
+        }
+        FirebaseManager.Instance.SaveMultiGameHistory(multiGameHistory);
+    }
+    
+    public bool GetIsPaused()
+    {
+        return isPaused;
+    }
+
 }

@@ -6,17 +6,12 @@ using UnityEngine;
 
 public class NetworkShooting : WNetworkBehaviour
 {
-    // [Networked, OnChangedRender(nameof(ColorChanged))]
-    // public int state { get; set; }
-    // void ColorChanged()
-    // {
-    //     Debug.Log("Aaaaaaaaaaaaaaaaa: " + state);
-    //     SpawnBulletRPC();
-    //     if (state == 100)
-    //     {
-    //         SpawnBulletFinishRPC();
-    //     }
-    // }
+    public bool isAutoTyping = false;
+    private int currentCharIndex = 0;
+    private string currentTarget = "";
+    private Coroutine autoTypingCoroutine;
+    [SerializeField] private TextMeshProUGUI targetTextComponent;
+    [SerializeField] private NetworkGun networkGun;
     private void OnEnable()
     {
         ShootingManager.OnResetAllTargets += ResetTarget;
@@ -26,13 +21,6 @@ public class NetworkShooting : WNetworkBehaviour
     {
         ShootingManager.OnResetAllTargets -= ResetTarget;
     }
-    private int currentCharIndex = 0;
-    private string currentTarget = "";
-    [SerializeField] private TextMeshProUGUI targetTextComponent;
-    [SerializeField] private NetworkGun networkGun;
-
-    [SerializeField] NetworkObject bullet;
-    [SerializeField] NetworkObject bulletFinish;
     public virtual void CheckKeyInput(NetworkObject targetTextTransform)
     {
         if (Time.timeScale > 0f && targetTextTransform != null)
@@ -66,14 +54,11 @@ public class NetworkShooting : WNetworkBehaviour
                         RPC_UIHighlightTypedText(currentCharIndex, currentTarget);
                         if (this.currentCharIndex == this.currentTarget.Length)
                         {
-                            NetworkObject bulletObject = Runner.Spawn(bulletFinish, this.networkGun.FirePoint.position, Quaternion.identity);
-                            bulletObject.name = "NetworkBulletFinish";
-                            bulletObject.GetComponent<NetworkBulletFly>().SetTarget(networkGun.currentTarget.transform);
+                            this.SpawnBulletObject(true);
                         }
                         else
                         {
-                            NetworkObject bulletObject = Runner.Spawn(bullet, this.networkGun.FirePoint.position, Quaternion.identity);
-                            bulletObject.GetComponent<NetworkBulletFly>().SetTarget(networkGun.currentTarget.transform);
+                            this.SpawnBulletObject(false);
                         }
                     }
                 }
@@ -86,8 +71,25 @@ public class NetworkShooting : WNetworkBehaviour
     {
         this.currentCharIndex = currentCharIndex;
         this.currentTarget = currentTarget;
-        this.HighlightTypedText(networkGun.currentTarget.GetComponentInChildren<TextMeshProUGUI>());
+
+        if (networkGun.currentTarget != null)
+        {
+            var textComponent = networkGun.currentTarget.GetComponentInChildren<TextMeshProUGUI>();
+            if (textComponent != null)
+            {
+                this.HighlightTypedText(textComponent);
+            }
+            else
+            {
+                Debug.LogWarning("TextMeshProUGUI component not found in current target.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Current target is null in networkGun.");
+        }
     }
+
     public virtual void HighlightTypedText(TextMeshProUGUI targetTextComponent)
     {
         targetTextComponent.text = "<color=green>" + this.currentTarget.Substring(0, this.currentCharIndex) + "</color>" + this.currentTarget.Substring(this.currentCharIndex);
@@ -98,35 +100,104 @@ public class NetworkShooting : WNetworkBehaviour
         this.targetTextComponent = null;
         this.currentTarget = "";
     }
-    public void ShootingAtTarget(Transform targetTextComponent)
-    {
-        this.SpawnBullet(NetworkBulletSpawner.bullet, targetTextComponent);
-        this.SpawnMuzzle();
-    }
-    public void FinishText(Transform targetTextComponent)
-    {
-        this.SpawnMuzzle();
-        this.SpawnBullet(NetworkBulletFinishSpawner.bulletFinish, targetTextComponent);
-        // this.networkGun.NetworkLookAtTarget.SwitchToNextTarget();
-    }
+
     private void SpawnMuzzle()
     {
-        Transform vfx_Muzzle = VFXSpawner.Instance.Spawn(VFXSpawner.muzzle, this.networkGun.FirePoint.position, this.networkGun.FirePoint.rotation);
-        vfx_Muzzle.gameObject.SetActive(true);
+        NetworkMuzzleSpawner.Instance.Spawn(this.networkGun.FirePoint.position, this.networkGun.FirePoint.rotation);
     }
-    private void SpawnBullet(string namePrefab, Transform targetTextComponent)
+    private void SpawnBulletObject(bool isFinishBullet)
     {
-        NetworkObject bullet = NetworkBulletSpawner.Instance.Spawn(namePrefab, this.networkGun.FirePoint.position, this.networkGun.FirePoint.rotation);
-        if (namePrefab == NetworkBulletFinishSpawner.bulletFinish)
+        if (isFinishBullet)
         {
-            bullet = NetworkBulletFinishSpawner.Instance.Spawn(namePrefab, this.networkGun.FirePoint.position, this.networkGun.FirePoint.rotation);
+            NetworkObject bulletObject = NetworkBulletFinishSpawner.Instance.Spawn(this.networkGun.FirePoint.position, Quaternion.identity, (runner, obj) =>
+                                        {
+                                            var impact = obj.transform.Find("BulletImpact").GetComponent<NetworkBulletImpact>();
+                                            string playerName = Object.transform.GetComponent<PlayerStats>().playerName.ToString();
+                                            impact.Initialize(Object.InputAuthority.AsIndex, playerName);
+                                        });
+            bulletObject.GetComponent<NetworkBulletFly>().SetTarget(networkGun.currentTarget.transform);
+            this.SpawnMuzzle();
         }
-        if (bullet == null) return;
-        NetworkBulletFly bulletFly = bullet.GetComponentInChildren<NetworkBulletFly>();
-        bulletFly.SetTarget(targetTextComponent);
-
-        bullet.gameObject.SetActive(true);
+        else
+        {
+            NetworkObject bulletObject = NetworkBulletSpawner.Instance.Spawn(this.networkGun.FirePoint.position, Quaternion.identity, (runner, obj) =>
+                                        {
+                                            var impact = obj.transform.Find("BulletImpact").GetComponent<NetworkBulletImpact>();
+                                            string playerName = Object.transform.GetComponent<PlayerStats>().playerName.ToString();
+                                            impact.Initialize(Object.InputAuthority.AsIndex, playerName);
+                                        });
+            bulletObject.GetComponent<NetworkBulletFly>().SetTarget(networkGun.currentTarget.transform);
+            this.SpawnMuzzle();
+        }
     }
+
+    //Auto typing
+    public void StartAutoTyping()
+    {
+        if (autoTypingCoroutine == null)
+        {
+            autoTypingCoroutine = StartCoroutine(AutoTypingCoroutine());
+        }
+    }
+
+    public void StopAutoTyping()
+    {
+        if (autoTypingCoroutine != null)
+        {
+            StopCoroutine(autoTypingCoroutine);
+            autoTypingCoroutine = null;
+        }
+    }
+
+    private IEnumerator AutoTypingCoroutine()
+    {
+        while (isAutoTyping)
+        {
+            if (this.currentCharIndex < this.currentTarget.Length)
+            {
+                char nextChar = this.currentTarget[this.currentCharIndex];
+                SimulateKeyPress(nextChar);
+            }
+            float randomDelay = Random.Range(0.1f, 0.5f);
+            yield return new WaitForSeconds(randomDelay);
+        }
+        yield return new WaitForSeconds(0.5f);
+    }
+
+    private void SimulateKeyPress(char typedChar)
+    {
+        NetworkInputData data = new NetworkInputData
+        {
+            typedChar = typedChar
+        };
+
+        data.SetKeyTyped(true);
+        if (HasStateAuthority)
+        {
+            if (this.currentCharIndex < this.currentTarget.Length && typedChar == this.currentTarget[this.currentCharIndex])
+            {
+                this.currentCharIndex++;
+                RPC_UIHighlightTypedText(currentCharIndex, currentTarget);
+
+                if (this.currentCharIndex == this.currentTarget.Length)
+                {
+                    this.SpawnBulletObject(true);
+                    StartCoroutine(WaitAfterFinalCharacter());
+                }
+                else
+                {
+                    this.SpawnBulletObject(false);
+
+                }
+            }
+        }
+    }
+    private IEnumerator WaitAfterFinalCharacter()
+    {
+        yield return new WaitForSeconds(2f);
+    }
+
+
     protected override void LoadComponents()
     {
         base.LoadComponents();

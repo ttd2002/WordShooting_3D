@@ -24,12 +24,8 @@ public class NetworkMeteoriteDepsawn : Despawn
     }
     protected override void DespawnObject()
     {
-        Transform reticle = transform.parent.Find("Canvas/Reticle");
-        reticle.gameObject.SetActive(false);
-        NetworkMeteoriteSpawner.Instance.Despawn(transform.parent.GetComponent<NetworkObject>());
-        NetworkMeteoriteSpawner.Instance.MarkObjectAsInactive(transform.parent.GetComponent<NetworkObject>());
+        NetworkMeteoriteSpawner.Instance.OnTextCompleted();
         ShootingManager.ResetAllTargets();
-
     }
     public void SetCanDespawnIsTrue()
     {

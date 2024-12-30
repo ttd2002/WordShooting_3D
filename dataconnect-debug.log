@@ -1,0 +1,10 @@
+I1209 21:25:37.229450    6140 load.go:37] Reloading schema and connectors...
+I1209 21:25:37.243079    6140 control.go:45] [engine.Service /emulator/WordShooting_3D 08aa] UpdateSchema(): done sources: schema\schema.gql [1384B] 
+I1209 21:25:37.252085    6140 control.go:73] [engine.Service /emulator/WordShooting_3D 08aa] UpdateConnector(default): done sources: connector\queries.gql [1855B] connector\mutations.gql [1163B] 
+I1209 21:25:37.276085    6140 collector.go:107] schema extensions wrote into "C:\\UnityProject\\WordShooting_3D\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [65151B] 
+I1209 21:25:37.278199    6140 load.go:115] Finished reloading
+I1209 21:25:37.284085    6140 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:9399
+I1209 21:25:37.285083    6140 dev.go:95] Listening on address (HTTP + gRPC): [::1]:9399
+I1209 21:25:44.258034    6140 control.go:45] [engine.Service /emulator/WordShooting_3D 2f84] UpdateSchema(): done sources: schema\schema.gql [1384B] 
+I1209 21:25:44.261599    6140 control.go:73] [engine.Service /emulator/WordShooting_3D 2f84] UpdateConnector(default): done sources: connector\mutations.gql [1163B] connector\queries.gql [1855B] 

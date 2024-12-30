@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class NetworkBulletFly : WNetworkBehaviour
 {
+    [SerializeField] private float speed = 100f;
 
     private Transform target;
-    [SerializeField] private float speed = 100f;
     public void SetTarget(Transform targetTransform)
     {
         target = targetTransform;
