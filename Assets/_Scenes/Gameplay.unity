@@ -897,6 +897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   remainingTime: 120
+  isPause: 0
 --- !u!1 &502764502
 GameObject:
   m_ObjectHideFlags: 0
@@ -3070,7 +3071,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingUI: {fileID: 15614661}
-  networkScore: {fileID: 0}
 --- !u!1 &1705661106
 GameObject:
   m_ObjectHideFlags: 0

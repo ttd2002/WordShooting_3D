@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "WordShooting_3D.sln"
+    "dotnet.defaultSolution": "WordShooting_3D_ver2.sln"
 }
